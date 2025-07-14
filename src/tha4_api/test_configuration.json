@@ -1,0 +1,313 @@
+{
+  "name": "Elysia",
+  "description": "Animation configuration for Elysia from Honkai Impact 3rd, designed to reflect her cheerful, elegant, and sweet personality.",
+  "breathing": {
+    "duration": 4.5
+  },
+  "states": {
+    "idle": [
+      [
+        {
+          "action": "head_rotation",
+          "duration": 2.0,
+          "x": [0.5, 0.5],
+          "y": [0.5, 0.55],
+          "z": [0.5, 0.7],
+          "restore": "reverse",
+          "transition": "linear"
+        },
+        {
+          "action": "eye",
+          "desired_state": "eye_relaxed",
+          "duration": 0.2,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "kick_off_offset": 1.5,
+          "restore": "reverse"
+        }
+      ],
+      [
+        {
+          "action": "head_rotation",
+          "duration": 2.0,
+          "x": [0.5, 0.5],
+          "y": [0.5, 0.52],
+          "z": [0.5, 0.3],
+          "restore": "reverse",
+          "transition": "linear"
+        },
+        {
+          "action": "eye",
+          "desired_state": "eye_happy_wink",
+          "duration": 0.8,
+          "x": [0.0, 0.4],
+          "y": [0.0, 0.4],
+          "restore": "reverse"
+        },
+        {
+          "action": "mouth",
+          "shapes": ["mouth_raised_corner"],
+          "duration": 1.0,
+          "restore": "reverse"
+        }
+      ],
+      [
+        {
+          "action": "iris_rotation",
+          "duration": 1.0,
+          "x": [0.5, 0.8],
+          "y": [0.5, 0.5],
+          "restore": "reverse",
+          "kick_off_offset": 0.5
+        },
+        {
+          "action": "eye",
+          "desired_state": "eye_wink",
+          "duration": 0.15,
+          "x": [0.0, 1.0],
+          "y": [0.0, 0.0],
+          "kick_off_offset": 2.5,
+          "restore": "rapid"
+        }
+      ]
+    ],
+    "joy": [
+      [
+        {
+          "action": "head_rotation",
+          "duration": 0.6,
+          "x": [0.5, 0.5],
+          "y": [0.5, 0.6],
+          "z": [0.5, 0.8],
+          "restore": "reverse"
+        },
+        {
+          "action": "body_rotation",
+          "duration": 0.8,
+          "y": [0.5, 0.5],
+          "z": [0.5, 0.6],
+          "restore": "reverse"
+        },
+        {
+          "action": "eyebrow",
+          "desired_state": "eyebrow_happy",
+          "duration": 0.5,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "restore": "reverse"
+        },
+        {
+          "action": "eye",
+          "desired_state": "eye_happy_wink",
+          "duration": 0.5,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "restore": "reverse"
+        },
+        {
+          "action": "mouth",
+          "shapes": ["mouth_raised_corner"],
+          "duration": 0.8,
+          "restore": "reverse"
+        }
+      ]
+    ],
+    "sadness": [
+      [
+        {
+          "action": "head_rotation",
+          "duration": 2.5,
+          "x": [0.5, 0.5],
+          "y": [0.5, 0.3],
+          "z": [0.5, 0.4],
+          "restore": "reverse"
+        },
+        {
+          "action": "body_rotation",
+          "duration": 3.0,
+          "y": [0.5, 0.5],
+          "z": [0.5, 0.45],
+          "restore": "reverse"
+        },
+        {
+          "action": "eyebrow",
+          "desired_state": "eyebrow_troubled",
+          "duration": 2.5,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "restore": "reverse"
+        },
+        {
+          "action": "mouth",
+          "shapes": ["mouth_lowered_corner"],
+          "duration": 2.0,
+          "restore": "reverse"
+        }
+      ]
+    ],
+    "anger": [
+      [
+        {
+          "action": "head_rotation",
+          "duration": 0.4,
+          "x": [0.5, 0.5],
+          "y": [0.5, 0.5],
+          "z": [0.5, 0.3],
+          "restore": "rapid"
+        },
+        {
+          "action": "eyebrow",
+          "desired_state": "eyebrow_angry",
+          "duration": 0.8,
+          "x": [0.0, 0.8],
+          "y": [0.0, 0.8],
+          "restore": "reverse"
+        },
+        {
+          "action": "eye",
+          "desired_state": "eye_unimpressed",
+          "duration": 0.8,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "restore": "reverse"
+        },
+        {
+          "action": "mouth",
+          "shapes": ["mouth_smirk"],
+          "duration": 1.0,
+          "restore": "reverse"
+        }
+      ]
+    ],
+    "disgust": [
+      [
+        {
+          "action": "head_rotation",
+          "duration": 0.8,
+          "x": [0.5, 0.5],
+          "y": [0.5, 0.6],
+          "z": [0.5, 0.25],
+          "restore": "reverse"
+        },
+        {
+          "action": "iris_rotation",
+          "duration": 0.8,
+          "x": [0.5, 0.2],
+          "y": [0.5, 0.4],
+          "restore": "reverse"
+        },
+        {
+          "action": "eyebrow",
+          "desired_state": "eyebrow_lowered",
+          "duration": 1.0,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "restore": "reverse"
+        },
+        {
+          "action": "eye",
+          "desired_state": "eye_unimpressed",
+          "duration": 1.0,
+          "x": [0.0, 0.7],
+          "y": [0.0, 0.7],
+          "restore": "reverse"
+        }
+      ]
+    ],
+    "fear": [
+      [
+        {
+          "action": "head_rotation",
+          "duration": 0.25,
+          "x": [0.5, 0.5],
+          "y": [0.5, 0.45],
+          "z": [0.5, 0.5],
+          "restore": "rapid"
+        },
+        {
+          "action": "body_rotation",
+          "duration": 0.3,
+          "y": [0.5, 0.4],
+          "z": [0.5, 0.5],
+          "restore": "rapid"
+        },
+        {
+          "action": "iris_small",
+          "duration": 0.3,
+          "x": [0.0, 0.6],
+          "y": [0.0, 0.6],
+          "restore": "reverse"
+        },
+        {
+          "action": "eyebrow",
+          "desired_state": "eyebrow_troubled",
+          "duration": 0.5,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "restore": "reverse"
+        },
+        {
+          "action": "mouth",
+          "shapes": ["mouth_ooo"],
+          "duration": 0.4,
+          "restore": "reverse"
+        }
+      ]
+    ],
+    "surprise": [
+      [
+        {
+          "action": "head_rotation",
+          "duration": 0.3,
+          "x": [0.5, 0.5],
+          "y": [0.5, 0.65],
+          "z": [0.5, 0.5],
+          "restore": "rapid"
+        },
+        {
+          "action": "eyebrow",
+          "desired_state": "eyebrow_raised",
+          "duration": 0.4,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "restore": "reverse"
+        },
+        {
+          "action": "eye",
+          "desired_state": "eye_surprised",
+          "duration": 0.4,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "restore": "reverse"
+        },
+        {
+          "action": "mouth",
+          "shapes": ["mouth_ooo"],
+          "duration": 0.6,
+          "restore": "reverse"
+        }
+      ]
+    ],
+    "neutral": [
+      [
+        {
+          "action": "eye",
+          "desired_state": "eye_relaxed",
+          "duration": 0.2,
+          "x": [0.0, 1.0],
+          "y": [0.0, 1.0],
+          "kick_off_offset": 2.0,
+          "restore": "reverse"
+        },
+        {
+          "action": "head_rotation",
+          "duration": 3.0,
+          "x": [0.5, 0.5],
+          "y": [0.5, 0.5],
+          "z": [0.5, 0.5],
+          "restore": "reverse"
+        }
+      ]
+    ]
+  }
+}
