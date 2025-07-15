@@ -133,7 +133,7 @@ class Live2DRealtimeSessionManager:
     def shutdownSession(self, sessionName: str):
         session = self.sessions.get(sessionName)
         if session is not None:
-            asyncio.ensure_future(session['session'].shutdown(), session['session'].loop)
+            asyncio.ensure_future(session['session'].shutdown(), loop=session['session'].loop)
             del self.sessions[sessionName]
             
     def daemon_thread_wrapper(self):

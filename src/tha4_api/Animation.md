@@ -102,7 +102,7 @@ Here is the specification for a single composition object.
 | `shapes`          | `array<string>`              | Yes (for `mouth`)                      | An array of mouth shape names to cycle through during the animation's duration.                                                                                              |
 | `kick_off_offset` | `float`                      | No (Default: `0.0`)                    | A delay in seconds before this composition starts playing within its group. This allows for sequencing actions within a concurrent group.                                        |
 | `restore`         | `string`                     | No (Default: `"reverse"`)              | Defines how the parameter returns to its default state after `duration` is complete. <br> - `"reverse"`: Plays the animation backward over the same duration. <br> - `"rapid"`: Plays the animation backward at double speed (half the duration). <br> - `"none"`: Instantly snaps back to the default state. |
-| `transition`      | `string`                     | No (Default: `"linear"`)               | The interpolation method used to move between the start and end values. Currently, only `"linear"` and `"sine"` is supported.                                                            |
+| `transition`      | `string`                     | No (Default: `"linear"`)               | The interpolation method used to move between the start and end values. Currently, only `"linear"` and `"sine"` `"quadratic"` is supported.                                                            |
 
 ---
 
