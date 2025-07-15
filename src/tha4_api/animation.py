@@ -9,6 +9,7 @@ import numpy
 import pickle
 import pathlib
 import gzip
+import tha4_api.animationProvider
 
 class AnimationConfiguration:
     def __init__(self, configuration: dict):
@@ -172,6 +173,38 @@ class Renderer:
                                         self.defaultParams.eyebrow_values['right'])
                                 case _:
                                     raise ValueError(f"Invalid restore value: {composition.get('restore')}")
+                        case "sine":
+                            vec_x = tha4_api.animationProvider.SineAnimation(
+                                composition['x'][0], composition['x'][1], 
+                                composition['duration'], self.baseFps)
+                            vec_y = tha4_api.animationProvider.SineAnimation(
+                                composition['y'][0], composition['y'][1], 
+                                composition['duration'], self.baseFps)
+                            for i in range(start_frame, end_frame):
+                                composed[i].set_eyebrow_params(
+                                    composition.get("desired_state", "relaxed"), 
+                                    vec_x[i - start_frame], vec_y[i - start_frame])
+                            
+                            reverse_x = [i for i in reversed(vec_x)]
+                            reverse_y = [i for i in reversed(vec_y)]
+                            
+                            match composition.get("restore", "reverse"):
+                                case "reverse":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = end_frame + (end_frame - start_frame)
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_eyebrow_params(
+                                            composition.get("desired_state", "relaxed"), 
+                                            reverse_x[i - end_frame], reverse_y[i - end_frame])
+                                case "rapid":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = int(end_frame + (end_frame - start_frame) / 2.0)
+                                    restore_end_frame = restore_end_frame if restore_end_frame < len(composed) else len(composed) - 1
+                                    
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_eyebrow_params(
+                                            composition.get("desired_state", "relaxed"), 
+                                            reverse_x[(i - end_frame) * 2], reverse_y[(i - end_frame) * 2])
                         case _:
                             raise ValueError(f"Invalid transition value: {composition.get('transition')}")
                             
@@ -214,6 +247,38 @@ class Renderer:
                                         self.defaultParams.eye_values['right'])
                                 case _:
                                     raise ValueError(f"Invalid restore value: {composition.get('restore')}")
+                        case "sine":
+                            vec_x = tha4_api.animationProvider.SineAnimation(
+                                composition['x'][0], composition['x'][1], 
+                                composition['duration'], self.baseFps)
+                            vec_y = tha4_api.animationProvider.SineAnimation(
+                                composition['y'][0], composition['y'][1], 
+                                composition['duration'], self.baseFps)
+                            for i in range(start_frame, end_frame):
+                                composed[i].set_eye_params(
+                                    composition.get("desired_state", "normal"), 
+                                    vec_x[i - start_frame], vec_y[i - start_frame])
+                            
+                            reverse_x = [i for i in reversed(vec_x)]
+                            reverse_y = [i for i in reversed(vec_y)]
+                            
+                            match composition.get("restore", "reverse"):
+                                case "reverse":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = end_frame + (end_frame - start_frame)
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_eye_params(
+                                            composition.get("desired_state", "normal"), 
+                                            reverse_x[i - end_frame], reverse_y[i - end_frame])
+                                case "rapid":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = int(end_frame + (end_frame - start_frame) / 2.0)
+                                    restore_end_frame = restore_end_frame if restore_end_frame < len(composed) else len(composed) - 1
+                                    
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_eye_params(
+                                            composition.get("desired_state", "normal"), 
+                                            reverse_x[(i - end_frame) * 2], reverse_y[(i - end_frame) * 2])
                         case _:
                             raise ValueError(f"Invalid transition value: {composition.get('transition')}")
                         
@@ -252,6 +317,35 @@ class Renderer:
                                         self.defaultParams.iris_rotation_x)
                                 case _:
                                     raise ValueError(f"Invalid restore value: {composition.get('restore')}")
+                        case "sine":
+                            vec_x = tha4_api.animationProvider.SineAnimation(
+                                composition['x'][0], composition['x'][1], 
+                                composition['duration'], self.baseFps)
+                            vec_y = tha4_api.animationProvider.SineAnimation(
+                                composition['y'][0], composition['y'][1], 
+                                composition['duration'], self.baseFps)
+                            for i in range(start_frame, end_frame):
+                                composed[i].set_iris_rotation(
+                                    vec_y[i - start_frame], vec_x[i - start_frame])
+                            
+                            reverse_x = [i for i in reversed(vec_x)]
+                            reverse_y = [i for i in reversed(vec_y)]
+                            
+                            match composition.get("restore", "reverse"):
+                                case "reverse":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = end_frame + (end_frame - start_frame)
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_iris_rotation(
+                                            reverse_y[i - end_frame], reverse_x[i - end_frame])
+                                case "rapid":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = int(end_frame + (end_frame - start_frame) / 2.0)
+                                    restore_end_frame = restore_end_frame if restore_end_frame < len(composed) else len(composed) - 1
+                                    
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_iris_rotation(
+                                            reverse_y[(i - end_frame) * 2], reverse_x[(i - end_frame) * 2]) 
                         case _:
                             raise ValueError(f"Invalid transition value: {composition.get('transition')}")
                         
@@ -299,6 +393,39 @@ class Renderer:
                                         )
                                 case _:
                                     raise ValueError(f"Invalid restore value: {composition.get('restore')}")
+                        case "sine":
+                            vec_x = tha4_api.animationProvider.SineAnimation(
+                                composition['x'][0], composition['x'][1], 
+                                composition['duration'], self.baseFps)
+                            vec_y = tha4_api.animationProvider.SineAnimation(
+                                composition['y'][0], composition['y'][1], 
+                                composition['duration'], self.baseFps)
+                            vec_z = tha4_api.animationProvider.SineAnimation(
+                                composition['z'][0], composition['z'][1], 
+                                composition['duration'], self.baseFps)
+                            for i in range(start_frame, end_frame):
+                                composed[i].set_head_rotation(
+                                    vec_x[i - start_frame], vec_y[i - start_frame], vec_z[i - start_frame])
+                            
+                            reverse_x = [i for i in reversed(vec_x)]
+                            reverse_y = [i for i in reversed(vec_y)]
+                            reverse_z = [i for i in reversed(vec_z)]
+                            
+                            match composition.get("restore", "reverse"):
+                                case "reverse":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = end_frame + (end_frame - start_frame)
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_head_rotation(
+                                            reverse_x[i - end_frame], reverse_y[i - end_frame], reverse_z[i - end_frame])
+                                case "rapid":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = int(end_frame + (end_frame - start_frame) / 2.0)
+                                    restore_end_frame = restore_end_frame if restore_end_frame < len(composed) else len(composed) - 1
+                                    
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_head_rotation(
+                                            reverse_x[(i - end_frame) * 2], reverse_y[(i - end_frame) * 2], reverse_z[(i - end_frame) * 2]) 
                         case _:
                             raise ValueError(f"Invalid transition value: {composition.get('transition')}")
 
@@ -337,6 +464,35 @@ class Renderer:
                                         self.defaultParams.body_rotation_z)
                                 case _:
                                     raise ValueError(f"Invalid restore value: {composition.get('restore')}")
+                        case "sine":
+                            vec_y = tha4_api.animationProvider.SineAnimation(
+                                composition['y'][0], composition['y'][1], 
+                                composition['duration'], self.baseFps)
+                            vec_z = tha4_api.animationProvider.SineAnimation(
+                                composition['z'][0], composition['z'][1], 
+                                composition['duration'], self.baseFps)
+                            for i in range(start_frame, end_frame):
+                                composed[i].set_body_rotation(
+                                    vec_y[i - start_frame], vec_z[i - start_frame])
+                            
+                            reverse_y = [i for i in reversed(vec_y)]
+                            reverse_z = [i for i in reversed(vec_z)]
+                            
+                            match composition.get("restore", "reverse"):
+                                case "reverse":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = end_frame + (end_frame - start_frame)
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_body_rotation(
+                                            reverse_y[i - end_frame], reverse_z[i - end_frame])
+                                case "rapid":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = int(end_frame + (end_frame - start_frame) / 2.0)
+                                    restore_end_frame = restore_end_frame if restore_end_frame < len(composed) else len(composed) - 1
+                                    
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_body_rotation(
+                                            reverse_y[(i - end_frame) * 2], reverse_z[(i - end_frame) * 2]) 
                         case _:
                             raise ValueError(f"Invalid transition value: {composition.get('transition')}")
                         
@@ -400,6 +556,34 @@ class Renderer:
                                         self.defaultParams.iris_small_values['right'])
                                 case _:
                                     raise ValueError(f"Invalid restore value: {composition.get('restore')}")
+                        case "sine":
+                            vec_x = tha4_api.animationProvider.SineAnimation(
+                                composition['x'][0], composition['x'][1], 
+                                composition['duration'], self.baseFps)
+                            vec_y = tha4_api.animationProvider.SineAnimation(
+                                composition['y'][0], composition['y'][1], 
+                                composition['duration'], self.baseFps)
+                            for i in range(start_frame, end_frame):
+                                composed[i].set_iris_small(
+                                    vec_x[i - start_frame], vec_y[i - start_frame])
+                            
+                            reverse_x = [i for i in reversed(vec_x)]
+                            reverse_y = [i for i in reversed(vec_y)]
+                            
+                            match composition.get("restore", "reverse"):
+                                case "reverse":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = end_frame + (end_frame - start_frame)
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_iris_small(
+                                            reverse_x[i - end_frame], reverse_y[i - end_frame])
+                                case "rapid":
+                                    restore_start_frame = end_frame
+                                    restore_end_frame = end_frame + (end_frame - start_frame) / 2.0
+                                    
+                                    for i in range(restore_start_frame, restore_end_frame):
+                                        composed[i].set_iris_small(
+                                            reverse_x[(i - end_frame) * 2], reverse_y[(i - end_frame) * 2]) 
                         case _:
                             raise ValueError(f"Invalid transition value: {composition.get('transition')}")
             
