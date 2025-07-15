@@ -1,437 +1,987 @@
 {
   "name": "Elysia",
-  "description": "Live2D animation configuration for Elysia from Honkai Impact 3rd, emphasizing her elegant, cheerful, and sweet personality across various emotional states, with dynamic body and head movements.",
+  "description": "Live2D Animation Configuration for Elysia from Honkai Impact 3rd, reflecting her elegant, cheerful, and sweet personality with dynamic, expressive movements across various emotional states. All head and body movements are designed with a significant delta of 0.3 to 0.5 for a lively and responsive feel.",
   "breathing": {
-    "duration": 4.0
+    "duration": 4.5
   },
   "states": {
-    "idle": [
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 2.0,
-          "x": [0.5, 0.8],
-          "y": [0.5, 0.4],
-          "z": [0.5, 0.2],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "body_rotation",
-          "duration": 2.5,
-          "y": [0.5, 0.2],
-          "z": [0.5, 0.8],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "eye",
-          "desired_state": "eye_wink",
-          "duration": 0.15,
-          "x": [0.0, 1.0],
-          "y": [0.0, 1.0],
-          "kick_off_offset": 0.8,
-          "restore": "reverse",
-          "transition": "linear"
-        }
-      ],
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 2.0,
-          "x": [0.5, 0.2],
-          "y": [0.5, 0.8],
-          "z": [0.5, 0.2],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "mouth",
-          "shapes": ["mouth_raised_corner"],
-          "duration": 0.2,
-          "kick_off_offset": 0.5,
-          "restore": "rapid"
-        },
-        {
-          "action": "eyebrow",
-          "desired_state": "eyebrow_happy",
-          "duration": 0.2,
-          "x": [0.5, 0.6],
-          "y": [0.5, 0.6],
-          "kick_off_offset": 0.5,
-          "restore": "rapid",
-          "transition": "sine"
-        }
-      ]
+    "idle": [[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.2],
+            "duration": 0.8,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_wink",
+            "x": [0.0, 1.0],
+            "y": [0.0, 1.0],
+            "duration": 0.1,
+            "kick_off_offset": 0.5,
+            "restore": "rapid",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_raised_corner", "mouth_ooo"],
+            "duration": 0.3,
+            "kick_off_offset": 0.2,
+            "restore": "reverse"
+          }
+        ],[
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.2],
+            "duration": 1.0,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.7,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "iris_rotation",
+            "x": [0.5, 0.6],
+            "y": [0.5, 0.45],
+            "duration": 0.5,
+            "kick_off_offset": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ],[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.7,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_relaxed",
+            "x": [0.0, 0.1],
+            "y": [0.0, 0.1],
+            "duration": 0.3,
+            "kick_off_offset": 0.0,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "iris_rotation",
+            "x": [0.5, 0.4],
+            "y": [0.5, 0.55],
+            "duration": 0.6,
+            "kick_off_offset": 0.2,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_raised",
+            "x": [0.0, 0.2],
+            "y": [0.0, 0.2],
+            "duration": 0.4,
+            "restore": "reverse",
+            "transition": "sine"
+          }
+        ],[
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.2],
+            "duration": 0.9,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.2],
+            "duration": 0.7,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_wink",
+            "x": [0.0, 1.0],
+            "y": [0.0, 0.0],
+            "duration": 0.1,
+            "kick_off_offset": 0.7,
+            "restore": "rapid",
+            "transition": "linear"
+          }
+        ]
     ],
-    "neutral": [
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 1.5,
-          "x": [0.5, 0.2],
-          "y": [0.5, 0.8],
-          "z": [0.5, 0.5],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "eye",
-          "desired_state": "eye_relaxed",
-          "duration": 0.3,
-          "x": [0.5, 0.5],
-          "y": [0.5, 0.5],
-          "kick_off_offset": 0.7,
-          "restore": "reverse",
-          "transition": "linear"
-        }
-      ]
+    "neutral": [[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.2],
+            "duration": 0.6,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "eye",
+            "desired_state": "normal",
+            "x": [0.0, 0.0],
+            "y": [0.0, 0.0],
+            "duration": 0.1,
+            "kick_off_offset": 0.0,
+            "restore": "rapid",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_raised_corner"],
+            "duration": 0.3,
+            "kick_off_offset": 0.2,
+            "restore": "reverse"
+          }
+        ],[
+          {
+            "action": "iris_rotation",
+            "x": [0.5, 0.6],
+            "y": [0.5, 0.45],
+            "duration": 0.4,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_raised",
+            "x": [0.0, 0.1],
+            "y": [0.0, 0.1],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_ooo"],
+            "duration": 0.2,
+            "kick_off_offset": 0.2,
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.6,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "sine"
+          }
+        ],[
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.7,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "restore": "reverse",
+            "transition": "sine"
+          }
+        ],[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.2],
+            "duration": 0.6,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "eye",
+            "desired_state": "normal",
+            "x": [0.0, 0.0],
+            "y": [0.0, 0.0],
+            "duration": 0.1,
+            "kick_off_offset": 0.3,
+            "restore": "rapid",
+            "transition": "linear"
+          },
+          {
+            "action": "iris_rotation",
+            "x": [0.5, 0.5],
+            "y": [0.5, 0.4],
+            "duration": 0.3,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_serious",
+            "x": [0.0, 0.15],
+            "y": [0.0, 0.15],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ]
     ],
-    "joy": [
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 0.8,
-          "x": [0.5, 0.0],
-          "y": [0.5, 1.0],
-          "z": [0.5, 0.0],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "body_rotation",
-          "duration": 1.0,
-          "y": [0.5, 0.9],
-          "z": [0.5, 0.2],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "eyebrow",
-          "desired_state": "eyebrow_happy",
-          "duration": 0.4,
-          "x": [0.0, 1.0],
-          "y": [0.0, 1.0],
-          "kick_off_offset": 0.1,
-          "restore": "reverse",
-          "transition": "sine"
-        },
-        {
-          "action": "eye",
-          "desired_state": "eye_happy_wink",
-          "duration": 0.2,
-          "x": [0.0, 1.0],
-          "y": [0.0, 1.0],
-          "kick_off_offset": 0.2,
-          "restore": "reverse",
-          "transition": "linear"
-        },
-        {
-          "action": "mouth",
-          "shapes": ["mouth_raised_corner", "mouth_smirk", "mouth_raised_corner"],
-          "duration": 0.6,
-          "kick_off_offset": 0.1,
-          "restore": "rapid"
-        }
-      ]
+    "joy": [[
+          {
+            "action": "mouth",
+            "shapes": ["mouth_raised_corner", "mouth_smirk", "mouth_ooo"],
+            "duration": 0.6,
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.9],
+            "z": [0.5, 0.2],
+            "duration": 0.6,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_happy_wink",
+            "x": [0.0, 1.0],
+            "y": [0.0, 1.0],
+            "duration": 0.15,
+            "kick_off_offset": 0.2,
+            "restore": "rapid",
+            "transition": "linear"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_happy",
+            "x": [0.0, 0.8],
+            "y": [0.0, 0.8],
+            "duration": 0.4,
+            "restore": "reverse",
+            "transition": "sine"
+          }
+        ],[
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.8],
+            "duration": 0.8,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.8],
+            "duration": 0.7,
+            "kick_off_offset": 0.1,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_wink",
+            "x": [0.0, 1.0],
+            "y": [0.0, 0.0],
+            "duration": 0.1,
+            "kick_off_offset": 0.5,
+            "restore": "rapid",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_raised_corner", "mouth_smirk"],
+            "duration": 0.4,
+            "kick_off_offset": 0.3,
+            "restore": "reverse"
+          }
+        ],[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_raised",
+            "x": [0.0, 0.9],
+            "y": [0.0, 0.9],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "sine"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_aaa", "mouth_raised_corner"],
+            "duration": 0.5,
+            "kick_off_offset": 0.1,
+            "restore": "reverse"
+          }
+        ],[
+          {
+            "action": "mouth",
+            "shapes": ["mouth_smirk", "mouth_raised_corner", "mouth_ooo"],
+            "duration": 0.7,
+            "restore": "reverse"
+          },
+          {
+            "action": "iris_small",
+            "x": [0.0, 0.2],
+            "y": [0.0, 0.2],
+            "duration": 0.4,
+            "kick_off_offset": 0.2,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_happy_wink",
+            "x": [0.0, 0.5],
+            "y": [0.0, 0.0],
+            "duration": 0.15,
+            "kick_off_offset": 0.4,
+            "restore": "rapid",
+            "transition": "linear"
+          }
+        ]
     ],
-    "anger": [
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 0.7,
-          "x": [0.5, 0.8],
-          "y": [0.5, 0.2],
-          "z": [0.5, 0.8],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "body_rotation",
-          "duration": 0.8,
-          "y": [0.5, 0.2],
-          "z": [0.5, 0.8],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "eyebrow",
-          "desired_state": "eyebrow_angry",
-          "duration": 0.3,
-          "x": [0.5, 0.7],
-          "y": [0.5, 0.7],
-          "kick_off_offset": 0.1,
-          "restore": "reverse",
-          "transition": "sine"
-        },
-        {
-          "action": "eye",
-          "desired_state": "eye_unimpressed",
-          "duration": 0.2,
-          "x": [0.5, 0.7],
-          "y": [0.5, 0.7],
-          "kick_off_offset": 0.2,
-          "restore": "reverse",
-          "transition": "linear"
-        },
-        {
-          "action": "mouth",
-          "shapes": ["mouth_delta", "mouth_smirk"],
-          "duration": 0.3,
-          "kick_off_offset": 0.15,
-          "restore": "rapid"
-        }
-      ]
+    "anger": [[
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_lowered",
+            "x": [0.0, 0.5],
+            "y": [0.0, 0.5],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_lowered_corner", "mouth_delta"],
+            "duration": 0.4,
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "sine"
+          }
+        ],[
+          {
+            "action": "mouth",
+            "shapes": ["mouth_delta"],
+            "duration": 0.3,
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.7,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_unimpressed",
+            "x": [0.0, 0.7],
+            "y": [0.0, 0.7],
+            "duration": 0.3,
+            "kick_off_offset": 0.2,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ],[
+          {
+            "action": "eye",
+            "desired_state": "eye_unimpressed",
+            "x": [0.0, 0.8],
+            "y": [0.0, 0.8],
+            "duration": 0.4,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_angry",
+            "x": [0.0, 0.3],
+            "y": [0.0, 0.3],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.6,
+            "transition": "sine",
+            "restore": "reverse"
+          }
+        ],[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "iris_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.5],
+            "duration": 0.3,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_troubled",
+            "x": [0.0, 0.4],
+            "y": [0.0, 0.4],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ]
     ],
-    "disgust": [
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 0.6,
-          "x": [0.5, 0.2],
-          "y": [0.5, 0.8],
-          "z": [0.5, 0.5],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "body_rotation",
-          "duration": 0.7,
-          "y": [0.5, 0.2],
-          "z": [0.5, 0.5],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "eyebrow",
-          "desired_state": "eyebrow_troubled",
-          "duration": 0.3,
-          "x": [0.5, 0.7],
-          "y": [0.5, 0.5],
-          "kick_off_offset": 0.1,
-          "restore": "reverse",
-          "transition": "sine"
-        },
-        {
-          "action": "eye",
-          "desired_state": "eye_unimpressed",
-          "duration": 0.2,
-          "x": [0.5, 0.7],
-          "y": [0.5, 0.5],
-          "kick_off_offset": 0.15,
-          "restore": "reverse",
-          "transition": "linear"
-        },
-        {
-          "action": "mouth",
-          "shapes": ["mouth_smirk"],
-          "duration": 0.2,
-          "kick_off_offset": 0.1,
-          "restore": "rapid"
-        }
-      ]
+    "disgust": [[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.6,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_lowered_corner", "mouth_delta"],
+            "duration": 0.3,
+            "restore": "reverse"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_troubled",
+            "x": [0.0, 0.5],
+            "y": [0.0, 0.5],
+            "duration": 0.3,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ],[
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.7,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.6,
+            "kick_off_offset": 0.1,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_unimpressed",
+            "x": [0.0, 0.6],
+            "y": [0.0, 0.6],
+            "duration": 0.3,
+            "kick_off_offset": 0.2,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ],[
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_raised",
+            "x": [0.0, 0.7],
+            "y": [0.0, 0.0],
+            "duration": 0.4,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_ooo"],
+            "duration": 0.2,
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "sine"
+          }
+        ],[
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_lowered",
+            "x": [0.0, 0.4],
+            "y": [0.0, 0.4],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_relaxed",
+            "x": [0.0, 0.3],
+            "y": [0.0, 0.3],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_delta"],
+            "duration": 0.2,
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.4,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "sine"
+          }
+        ]
     ],
-    "fear": [
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 0.5,
-          "x": [0.5, 0.5],
-          "y": [0.5, 0.0],
-          "z": [0.5, 0.8],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "body_rotation",
-          "duration": 0.6,
-          "y": [0.5, 0.0],
-          "z": [0.5, 0.5],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "eyebrow",
-          "desired_state": "eyebrow_raised",
-          "duration": 0.3,
-          "x": [0.0, 1.0],
-          "y": [0.0, 1.0],
-          "kick_off_offset": 0.05,
-          "restore": "reverse",
-          "transition": "sine"
-        },
-        {
-          "action": "eye",
-          "desired_state": "eye_surprised",
-          "duration": 0.2,
-          "x": [0.0, 1.0],
-          "y": [0.0, 1.0],
-          "kick_off_offset": 0.05,
-          "restore": "reverse",
-          "transition": "linear"
-        },
-        {
-          "action": "mouth",
-          "shapes": ["mouth_ooo"],
-          "duration": 0.2,
-          "kick_off_offset": 0.1,
-          "restore": "rapid"
-        }
-      ]
+    "fear": [[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.2],
+            "duration": 0.3,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_surprised",
+            "x": [0.0, 0.9],
+            "y": [0.0, 0.9],
+            "duration": 0.2,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_raised",
+            "x": [0.0, 0.8],
+            "y": [0.0, 0.8],
+            "duration": 0.2,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_ooo"],
+            "duration": 0.2,
+            "restore": "reverse"
+          }
+        ],[
+          {
+            "action": "iris_rotation",
+            "x": [0.5, 0.3],
+            "y": [0.5, 0.6],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "kick_off_offset": 0.1,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_raised_lower_eyelid",
+            "x": [0.0, 0.5],
+            "y": [0.0, 0.5],
+            "duration": 0.2,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ],[
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.4,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.3,
+            "kick_off_offset": 0.1,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_troubled",
+            "x": [0.0, 0.6],
+            "y": [0.0, 0.6],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ],[
+          {
+            "action": "eye",
+            "desired_state": "eye_surprised",
+            "x": [0.0, 0.8],
+            "y": [0.0, 0.8],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_ooo"],
+            "duration": 0.2,
+            "kick_off_offset": 0.1,
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.4,
+            "kick_off_offset": 0.05,
+            "transition": "sine",
+            "restore": "reverse"
+          }
+        ]
     ],
-    "joy": [
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 0.8,
-          "x": [0.5, 0.0],
-          "y": [0.5, 1.0],
-          "z": [0.5, 0.0],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "body_rotation",
-          "duration": 1.0,
-          "y": [0.5, 0.9],
-          "z": [0.5, 0.2],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "eyebrow",
-          "desired_state": "eyebrow_happy",
-          "duration": 0.4,
-          "x": [0.0, 1.0],
-          "y": [0.0, 1.0],
-          "kick_off_offset": 0.1,
-          "restore": "reverse",
-          "transition": "sine"
-        },
-        {
-          "action": "eye",
-          "desired_state": "eye_happy_wink",
-          "duration": 0.2,
-          "x": [0.0, 1.0],
-          "y": [0.0, 1.0],
-          "kick_off_offset": 0.2,
-          "restore": "reverse",
-          "transition": "linear"
-        },
-        {
-          "action": "mouth",
-          "shapes": ["mouth_raised_corner", "mouth_smirk", "mouth_raised_corner"],
-          "duration": 0.6,
-          "kick_off_offset": 0.1,
-          "restore": "rapid"
-        }
-      ]
+    "sadness": [[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.8,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_lowered_corner"],
+            "duration": 0.5,
+            "restore": "reverse"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_troubled",
+            "x": [0.0, 0.7],
+            "y": [0.0, 0.7],
+            "duration": 0.4,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ],[
+          {
+            "action": "iris_rotation",
+            "x": [0.5, 0.5],
+            "y": [0.5, 0.65],
+            "duration": 0.6,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.9,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_relaxed",
+            "x": [0.0, 0.3],
+            "y": [0.0, 0.3],
+            "duration": 0.4,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ],[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.7,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_lowered",
+            "x": [0.0, 0.4],
+            "y": [0.0, 0.4],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_delta"],
+            "duration": 0.3,
+            "kick_off_offset": 0.1,
+            "restore": "reverse"
+          }
+        ],[
+          {
+            "action": "mouth",
+            "shapes": ["mouth_ooo", "mouth_delta"],
+            "duration": 0.5,
+            "restore": "reverse"
+          },
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.8,
+            "kick_off_offset": 0.1,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_relaxed",
+            "x": [0.0, 0.2],
+            "y": [0.0, 0.2],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ]
     ],
-    "sadness": [
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 0.8,
-          "x": [0.5, 0.8],
-          "y": [0.5, 0.2],
-          "z": [0.5, 0.4],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "body_rotation",
-          "duration": 1.0,
-          "y": [0.5, 0.2],
-          "z": [0.5, 0.55],
-          "transition": "sine",
-          "restore": "reverse"
-        },
-        {
-          "action": "eyebrow",
-          "desired_state": "eyebrow_troubled",
-          "duration": 0.4,
-          "x": [0.5, 0.3],
-          "y": [0.5, 0.3],
-          "kick_off_offset": 0.1,
-          "restore": "reverse",
-          "transition": "sine"
-        },
-        {
-          "action": "eye",
-          "desired_state": "eye_relaxed",
-          "duration": 0.3,
-          "x": [0.5, 0.3],
-          "y": [0.5, 0.3],
-          "kick_off_offset": 0.15,
-          "restore": "reverse",
-          "transition": "linear"
-        },
-        {
-          "action": "mouth",
-          "shapes": ["mouth_lowered_corner", "mouth_delta"],
-          "duration": 0.4,
-          "kick_off_offset": 0.2,
-          "restore": "rapid"
-        }
-      ]
-    ],
-    "surprise": [
-      
-      [
-        {
-          "action": "head_rotation",
-          "duration": 0.3,
-          "x": [0.5, 0.5],
-          "y": [0.5, 0.0],
-          "z": [0.5, 0.5],
-          "transition": "linear",
-          "restore": "reverse"
-        },
-        {
-          "action": "body_rotation",
-          "duration": 0.4,
-          "y": [0.5, 0.0],
-          "z": [0.5, 0.5],
-          "transition": "linear",
-          "restore": "reverse"
-        },
-        {
-          "action": "eyebrow",
-          "desired_state": "eyebrow_raised",
-          "duration": 0.2,
-          "x": [0.0, 1.0],
-          "y": [0.0, 1.0],
-          "kick_off_offset": 0.0,
-          "restore": "reverse",
-          "transition": "linear"
-        },
-        {
-          "action": "eye",
-          "desired_state": "eye_surprised",
-          "duration": 0.15,
-          "x": [0.0, 1.0],
-          "y": [0.0, 1.0],
-          "kick_off_offset": 0.0,
-          "restore": "reverse",
-          "transition": "linear"
-        },
-        {
-          "action": "mouth",
-          "shapes": ["mouth_ooo"],
-          "duration": 0.15,
-          "kick_off_offset": 0.0,
-          "restore": "rapid"
-        }
-      ]
+    "surprise": [[
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.2],
+            "duration": 0.3,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_surprised",
+            "x": [0.0, 1.0],
+            "y": [0.0, 1.0],
+            "duration": 0.2,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_raised",
+            "x": [0.0, 1.0],
+            "y": [0.0, 1.0],
+            "duration": 0.2,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "mouth",
+            "shapes": ["mouth_ooo"],
+            "duration": 0.2,
+            "restore": "reverse"
+          }
+        ],[
+          {
+            "action": "body_rotation",
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.2],
+            "y": [0.5, 0.8],
+            "z": [0.5, 0.2],
+            "duration": 0.4,
+            "kick_off_offset": 0.1,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_surprised",
+            "x": [0.0, 0.9],
+            "y": [0.0, 0.9],
+            "duration": 0.3,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ],[
+          {
+            "action": "eye",
+            "desired_state": "eye_wink",
+            "x": [0.0, 1.0],
+            "y": [0.0, 1.0],
+            "duration": 0.1,
+            "restore": "none",
+            "transition": "linear"
+          },
+          {
+            "action": "eye",
+            "desired_state": "normal",
+            "x": [0.0, 0.0],
+            "y": [0.0, 0.0],
+            "duration": 0.05,
+            "kick_off_offset": 0.1,
+            "restore": "none",
+            "transition": "linear"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_wink",
+            "x": [0.0, 1.0],
+            "y": [0.0, 1.0],
+            "duration": 0.1,
+            "kick_off_offset": 0.15,
+            "restore": "none",
+            "transition": "linear"
+          },
+          {
+            "action": "eye",
+            "desired_state": "normal",
+            "x": [0.0, 0.0],
+            "y": [0.0, 0.0],
+            "duration": 0.05,
+            "kick_off_offset": 0.25,
+            "restore": "none",
+            "transition": "linear"
+          },
+          {
+            "action": "eyebrow",
+            "desired_state": "eyebrow_raised",
+            "x": [0.0, 0.7],
+            "y": [0.0, 0.7],
+            "duration": 0.4,
+            "restore": "reverse",
+            "transition": "linear"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "kick_off_offset": 0.1,
+            "restore": "reverse",
+            "transition": "sine"
+          }
+        ],[
+          {
+            "action": "mouth",
+            "shapes": ["mouth_aaa"],
+            "duration": 0.3,
+            "restore": "reverse"
+          },
+          {
+            "action": "head_rotation",
+            "x": [0.5, 0.8],
+            "y": [0.5, 0.2],
+            "z": [0.5, 0.8],
+            "duration": 0.5,
+            "transition": "sine",
+            "restore": "reverse"
+          },
+          {
+            "action": "eye",
+            "desired_state": "eye_surprised",
+            "x": [0.0, 0.8],
+            "y": [0.0, 0.8],
+            "duration": 0.3,
+            "kick_off_offset": 0.05,
+            "restore": "reverse",
+            "transition": "linear"
+          }
+        ]
     ]
   }
 }

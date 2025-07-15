@@ -49,13 +49,17 @@ class Renderer:
         self.imgInferenceManager = imgInferenceManager
         self.defaultParams = tha4_api.api.PoseUpdateParams()
         self.baseFps = baseFps
-        self.current_state = 'idle'
+        self.pending_states = queue.Queue()
         self.available_events = {
             'frame_update': []
         }
         self.last_breathing_state: typing.Optional[float] = None
         self.pending_breathing_state: typing.List[float] = []
         self.rendererStateCacher = RendererStateCacher(self)
+        self.connected = False
+        
+    def switch_state(self, state: str) -> None:
+        self.pending_states.put(state)
         
     def compile_all_animations(self):
         composed = []
@@ -74,7 +78,6 @@ class Renderer:
             'renderer_configuration': self.configuration,
             'base_fps': self.baseFps,
             'default_params': self.defaultParams,
-            'current_state': self.current_state,
             'last_breathing_state': self.last_breathing_state,
             'pending_breathing_state': self.pending_breathing_state,
         }))
@@ -85,7 +88,6 @@ class Renderer:
         self.configuration = data['renderer_configuration']
         self.baseFps = data['base_fps']
         self.defaultParams = data['default_params']
-        self.current_state = data['current_state']
         self.last_breathing_state = data['last_breathing_state']
         self.pending_breathing_state = data['pending_breathing_state']
         
@@ -415,6 +417,8 @@ class Renderer:
                                 case "reverse":
                                     restore_start_frame = end_frame
                                     restore_end_frame = end_frame + (end_frame - start_frame)
+                                    restore_end_frame = restore_end_frame if restore_end_frame < len(composed) else len(composed) - 1
+                                    
                                     for i in range(restore_start_frame, restore_end_frame):
                                         composed[i].set_head_rotation(
                                             reverse_x[i - end_frame], reverse_y[i - end_frame], reverse_z[i - end_frame])
@@ -630,7 +634,7 @@ class Renderer:
         
         return self.compose_animation_group(group)
     
-    def render_animation(self, composed: typing.List[tha4_api.api.PoseUpdateParams], debugging = False):
+    def render_animation(self, composed: typing.List[tha4_api.api.PoseUpdateParams], on_live = False, debugging = False):
         if not composed:
             return
         
@@ -652,14 +656,25 @@ class Renderer:
                 time.sleep(1/(self.baseFps + 10))
                 cv2.waitKey(1)
             
-            input(f"Composed and rendered {len(imgs)} frames (total {len(imgs) / self.baseFps} seconds) in {end_time - current_time} seconds. Press any key to continue...")
+            print(f"Composed and rendered {len(imgs)} frames (total {len(imgs) / self.baseFps} seconds) in {end_time - current_time} seconds.")
 
 
     def run_render_loop(self):
-        while True:
-            self.render_animation(self.compose_state(self.current_state))
+        while self.connected:
+            try:
+                states = self.compose_state(self.pending_states.get(block=False))
+                self.render_animation(states)
+                time.sleep(len(states) / self.baseFps)
+            except queue.Empty:
+                states = self.compose_state('idle')
+                self.render_animation(states)
+                time.sleep(len(states) / self.baseFps)
             
     def start_render_loop(self):
+        self.connected = True
         self.render_thread = threading.Thread(target=self.run_render_loop, daemon=True)
         self.render_thread.start()
+        
+    def stop_render_loop(self):
+        self.connected = False
                 
