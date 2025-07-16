@@ -1,6 +1,6 @@
 {
-  "name": "Elysia",
-  "description": "Live2D Animation Configuration for Elysia from Honkai Impact 3rd, reflecting her elegant, cheerful, and sweet personality with dynamic, expressive movements across various emotional states. All head and body movements are designed with a significant delta of 0.3 to 0.5 for a lively and responsive feel.",
+  "name": "Cyrene",
+  "description": "Live2D Animation Configuration for Cyrene from Honkai: Star Rail, reflecting her elegant, cheerful, and sweet personality with dynamic, expressive movements across various emotional states. All head and body movements are designed with a significant delta of 0.3 to 0.5 for a lively and responsive feel.",
   "breathing": {
     "duration": 4.5
   },
@@ -23,7 +23,26 @@
           ],
           "duration": 0.8,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
+        },
+        {
+          "action": "head_rotation",
+          "x": [
+            0.5,
+            0.4
+          ],
+          "y": [
+            0.5,
+            0.6
+          ],
+          "z": [
+            0.5,
+            0.5
+          ],
+          "duration": 0.8,
+          "restore": "reverse",
+          "transition": "sine",
+          "kick_off_offset": 1.6
         },
         {
           "action": "eye",
@@ -36,9 +55,9 @@
             0.0,
             1.0
           ],
-          "duration": 0.1,
+          "duration": 0.3,
           "kick_off_offset": 0.5,
-          "restore": "rapid",
+          "restore": "reverse",
           "transition": "linear"
         },
         {
@@ -62,7 +81,7 @@
             0.43180676758740894
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.4509810395114211
         }
       ],
@@ -79,7 +98,22 @@
           ],
           "duration": 1.0,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
+        },
+        {
+          "action": "body_rotation",
+          "y": [
+            0.5,
+            0.4
+          ],
+          "z": [
+            0.5,
+            0.6
+          ],
+          "duration": 1.0,
+          "kick_off_offset": 2.0,
+          "restore": "reverse",
+          "transition": "sine"
         },
         {
           "action": "head_rotation",
@@ -98,7 +132,7 @@
           "duration": 0.7,
           "kick_off_offset": 0.1,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "iris_rotation",
@@ -113,7 +147,7 @@
           "duration": 0.5,
           "kick_off_offset": 0.3,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "linear"
         }
       ],
       [
@@ -133,7 +167,25 @@
           ],
           "duration": 0.5,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
+        },
+        {
+          "action": "head_rotation",
+          "x": [
+            0.5,
+            0.6
+          ],
+          "y": [
+            0.5,
+            0.7
+          ],
+          "z": [
+            0.5,
+            0.5
+          ],
+          "duration": 1.0,
+          "restore": "reverse",
+          "transition": "sine"
         },
         {
           "action": "eye",
@@ -146,7 +198,7 @@
             0.0,
             0.1
           ],
-          "duration": 0.3,
+          "duration": 0.5,
           "kick_off_offset": 0.0,
           "restore": "reverse",
           "transition": "linear"
@@ -161,7 +213,7 @@
             0.5,
             0.55
           ],
-          "duration": 0.6,
+          "duration": 0.8,
           "kick_off_offset": 0.2,
           "restore": "reverse",
           "transition": "linear"
@@ -179,7 +231,7 @@
           ],
           "duration": 0.4,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "body_rotation",
@@ -192,7 +244,7 @@
             0.43728642304655135
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5155144328488025
         }
       ],
@@ -209,7 +261,7 @@
           ],
           "duration": 0.9,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "head_rotation",
@@ -228,7 +280,7 @@
           "duration": 0.7,
           "kick_off_offset": 0.1,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "eye",
@@ -241,7 +293,7 @@
             0.0,
             0.0
           ],
-          "duration": 0.1,
+          "duration": 0.6,
           "kick_off_offset": 0.7,
           "restore": "rapid",
           "transition": "linear"
@@ -266,7 +318,7 @@
           ],
           "duration": 0.6,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "eye",
@@ -287,7 +339,9 @@
         {
           "action": "mouth",
           "shapes": [
-            "mouth_raised_corner"
+            "mouth_raised_corner",
+            "mouth_aaa",
+            "mouth_ooo"
           ],
           "duration": 0.3,
           "kick_off_offset": 0.2,
@@ -304,7 +358,7 @@
             0.412389499372388
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5016915202047232
         }
       ],
@@ -336,7 +390,7 @@
           ],
           "duration": 0.3,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "mouth",
@@ -364,7 +418,7 @@
           "duration": 0.6,
           "kick_off_offset": 0.1,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "body_rotation",
@@ -377,7 +431,7 @@
             0.5156362267832598
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5268215343111378
         }
       ],
@@ -394,7 +448,7 @@
           ],
           "duration": 0.7,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "head_rotation",
@@ -412,7 +466,7 @@
           ],
           "duration": 0.5,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         }
       ],
       [
@@ -432,7 +486,7 @@
           ],
           "duration": 0.6,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "eye",
@@ -491,7 +545,7 @@
             0.6164001266090721
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.531784988133472
         }
       ]
@@ -523,7 +577,7 @@
             0.2
           ],
           "duration": 0.6,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -555,7 +609,7 @@
           ],
           "duration": 0.4,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "body_rotation",
@@ -568,7 +622,7 @@
             0.6429985626693986
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5035687708629446
         }
       ],
@@ -584,7 +638,7 @@
             0.8
           ],
           "duration": 0.8,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -603,7 +657,7 @@
           ],
           "duration": 0.7,
           "kick_off_offset": 0.1,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -649,7 +703,7 @@
             0.8
           ],
           "duration": 0.5,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -665,7 +719,7 @@
           ],
           "duration": 0.3,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "mouth",
@@ -688,7 +742,7 @@
             0.3882472990682446
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.579448090253776
         }
       ],
@@ -733,7 +787,7 @@
             0.8
           ],
           "duration": 0.5,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -763,7 +817,7 @@
             0.6538654051339924
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.4928755521532893
         }
       ]
@@ -811,7 +865,7 @@
           "duration": 0.5,
           "kick_off_offset": 0.1,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "body_rotation",
@@ -824,7 +878,7 @@
             0.6533732257535423
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5202300564901814
         }
       ],
@@ -852,7 +906,7 @@
             0.8
           ],
           "duration": 0.7,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -882,7 +936,7 @@
             0.6613895773006162
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.40040377828456436
         }
       ],
@@ -928,7 +982,7 @@
             0.8
           ],
           "duration": 0.6,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -946,7 +1000,7 @@
             0.6976261695846688
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5169132264502896
         }
       ],
@@ -966,7 +1020,7 @@
             0.8
           ],
           "duration": 0.5,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1010,7 +1064,7 @@
             0.4214421266028969
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5166699679228215
         }
       ]
@@ -1032,7 +1086,7 @@
             0.8
           ],
           "duration": 0.6,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1071,7 +1125,7 @@
             0.515608590946907
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.47746615946063203
         }
       ],
@@ -1087,7 +1141,7 @@
             0.8
           ],
           "duration": 0.7,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1106,7 +1160,7 @@
           ],
           "duration": 0.6,
           "kick_off_offset": 0.1,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1167,7 +1221,7 @@
           "duration": 0.5,
           "kick_off_offset": 0.1,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "body_rotation",
@@ -1180,7 +1234,7 @@
             0.36153536314264195
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5061004868565234
         }
       ],
@@ -1240,7 +1294,7 @@
           "duration": 0.4,
           "kick_off_offset": 0.1,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "body_rotation",
@@ -1253,7 +1307,7 @@
             0.33660200219004766
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5672004722612749
         }
       ]
@@ -1275,7 +1329,7 @@
             0.2
           ],
           "duration": 0.3,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1327,7 +1381,7 @@
             0.6247784624046075
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.565686941273291
         }
       ],
@@ -1362,7 +1416,7 @@
           ],
           "duration": 0.5,
           "kick_off_offset": 0.1,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1391,7 +1445,7 @@
             0.4508036651691878
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5709553253427071
         }
       ],
@@ -1407,7 +1461,7 @@
             0.8
           ],
           "duration": 0.4,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1426,7 +1480,7 @@
           ],
           "duration": 0.3,
           "kick_off_offset": 0.1,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1486,7 +1540,7 @@
           ],
           "duration": 0.4,
           "kick_off_offset": 0.05,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1500,7 +1554,7 @@
             0.6836128995626737
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.4788291254714355
         }
       ]
@@ -1522,7 +1576,7 @@
             0.8
           ],
           "duration": 0.8,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1559,7 +1613,7 @@
             0.5009240834413256
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5546199313249117
         }
       ],
@@ -1589,7 +1643,7 @@
             0.8
           ],
           "duration": 0.9,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1623,7 +1677,7 @@
             0.4137442890000588
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.41334850021479314
         }
       ],
@@ -1643,7 +1697,7 @@
             0.8
           ],
           "duration": 0.7,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1681,7 +1735,7 @@
             0.39905996121301196
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.5793591816946362
         }
       ],
@@ -1707,7 +1761,7 @@
           ],
           "duration": 0.8,
           "kick_off_offset": 0.1,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1740,7 +1794,7 @@
             0.6163141472346658
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.40315885775729454
         }
       ]
@@ -1762,7 +1816,7 @@
             0.2
           ],
           "duration": 0.3,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1814,7 +1868,7 @@
             0.37354162396386104
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.4207856052040304
         }
       ],
@@ -1830,7 +1884,7 @@
             0.8
           ],
           "duration": 0.5,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1849,7 +1903,7 @@
           ],
           "duration": 0.4,
           "kick_off_offset": 0.1,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -1964,7 +2018,7 @@
           "duration": 0.5,
           "kick_off_offset": 0.1,
           "restore": "reverse",
-          "transition": "quadratic"
+          "transition": "sine"
         },
         {
           "action": "body_rotation",
@@ -1977,7 +2031,7 @@
             0.6841236697426339
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.4494781973459123
         }
       ],
@@ -2005,7 +2059,7 @@
             0.8
           ],
           "duration": 0.5,
-          "transition": "quadratic",
+          "transition": "sine",
           "restore": "reverse"
         },
         {
@@ -2035,7 +2089,7 @@
             0.5508928076618083
           ],
           "restore": "rapid",
-          "transition": "quadratic",
+          "transition": "sine",
           "duration": 0.4284565222730588
         }
       ]

@@ -1,3 +1,4 @@
+from tha4_api import logger
 import tha4_api.api
 import typing
 import random
@@ -59,6 +60,7 @@ class Renderer:
         self.connected = False
         
     def switch_state(self, state: str) -> None:
+        logger.Logger.log(f"Switching to state {state}")
         self.pending_states.put(state)
         
     def compile_all_animations(self):
@@ -524,10 +526,12 @@ class Renderer:
     def run_render_loop(self):
         while self.connected:
             try:
+                logger.Logger.log('Composing desired state')
                 states = self.compose_state(self.pending_states.get(block=False))
                 self.render_animation(states)
                 time.sleep(len(states) / self.baseFps)
             except queue.Empty:
+                logger.Logger.log('Composing idle state')
                 states = self.compose_state('idle')
                 self.render_animation(states)
                 time.sleep(len(states) / self.baseFps)

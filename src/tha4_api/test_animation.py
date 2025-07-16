@@ -12,6 +12,6 @@ conf = animation.AnimationConfiguration(json.loads(pathlib.Path("./src/tha4_api/
 renderer = animation.Renderer(conf, manager, 20)
 # print('\n\n'.join(i.__repr__() for i in renderer.compose_state('idle')))
 renderer.compile_all_animations()
-renderer.serailize('test_cache_elysia.tha4')
+renderer.serailize('tha4_cache/Cyrene.tha4')
 # renderer.deserialize('test_cache_elysia.tha4')
 # renderer.render_animation(renderer.compose_state('idle'), debugging=True)

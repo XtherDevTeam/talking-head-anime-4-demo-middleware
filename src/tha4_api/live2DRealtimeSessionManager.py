@@ -39,6 +39,7 @@ class Live2DRealtimeSession:
         self.manager.set_base_image(PIL.Image.open(io.BytesIO(avatar)))
         self.renderer = tha4_api.animation.Renderer(self.characterConfiguration, self.manager, baseFps)
         self.rendered_frames: queue.Queue[numpy.ndarray] = queue.Queue()
+        self.shutdownSignal = False
         cacheResult = lookupCache(self.characterConfiguration.name)
         if cacheResult is not None:
             self.renderer.deserialize(str(cacheResult))
@@ -90,6 +91,8 @@ class Live2DRealtimeSession:
         last_sec = 0
         last_time = time.time()
         while self.connected:
+            if self.shutdownSignal:
+                break
             if time.time() - last_time > 1:
                 logger.Logger.log(f'Rendered {last_sec} frames for live2D session {self.characterConfiguration.name}...')
                 last_sec = 0
@@ -102,6 +105,7 @@ class Live2DRealtimeSession:
             time.sleep(1/self.renderer.baseFps)
         
         logger.Logger.log(f'Stopping video broadcast loop for live2D session {self.characterConfiguration.name}...')
+        await self.shutdown()
 
     async def shutdown(self):
         self.connected = False
