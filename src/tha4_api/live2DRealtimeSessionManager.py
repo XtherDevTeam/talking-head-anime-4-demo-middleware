@@ -49,6 +49,11 @@ class Live2DRealtimeSession:
         
         self.renderer.on('frame_update', lambda frame: self.rendered_frames.put(frame))
     
+    
+    def updateAvatar(self, avatar: bytes) -> None:
+        self.manager.clear_base_image()
+        self.manager.set_base_image(PIL.Image.open(io.BytesIO(avatar)))
+    
             
     async def start(self, live2DToken: str, livekitUrl: str, loop: asyncio.AbstractEventLoop):
         logger.Logger.log(f'Preparing to start live2D session {self.characterConfiguration.name}...')
@@ -118,13 +123,23 @@ class Live2DRealtimeSessionManager:
         self.sessions: typing.Dict[str, typing.Dict[str, typing.Any]] = {}
         
     def createSession(self, configuration: dict, avatar: bytes, baseFps: int = 20) -> str:
+        for sessionName in self.sessions:
+            if configuration['name'] == self.sessions[sessionName]['session'].characterConfiguration.name:
+                return sessionName
+            
         sessionName = uuid.uuid4().hex
         session = Live2DRealtimeSession(sessionName, configuration, avatar, baseFps)
         self.sessions[sessionName] = {
             'session': session,
-            'last_access_time': time.time()
+            'last_access_time': time.time(),
+            'sid': None
         }
         return sessionName
+    
+    def bindSessionSid(self, sessionName: str, sid: str) -> None:
+        session = self.sessions.get(sessionName)
+        if session is not None:
+            session['sid'] = sid
 
     def getSession(self, sessionName: str, refresh_access_time: bool = True) -> typing.Optional[Live2DRealtimeSession]:
         session = self.sessions.get(sessionName)
@@ -134,11 +149,24 @@ class Live2DRealtimeSessionManager:
             return session['session']
         return None
     
+    def getSessionBySid(self, sid: str) -> typing.Optional[Live2DRealtimeSession]:
+        for session in self.sessions.values():
+            if session['sid'] == sid:
+                return session['session']
+        return None
+    
     def shutdownSession(self, sessionName: str):
         session = self.sessions.get(sessionName)
         if session is not None:
-            asyncio.ensure_future(session['session'].shutdown(), loop=session['session'].loop)
+            if session['session'].connected:
+                asyncio.ensure_future(session['session'].shutdown(), loop=session['session'].loop)
             del self.sessions[sessionName]
+            
+    def shutdownSessionBySid(self, sid: str):
+        for session in self.sessions.values():
+            if session['sid'] == sid:
+                self.shutdownSession(session['session'].sessionName)
+                break
             
     def daemon_thread_wrapper(self):
         while True:

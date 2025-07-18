@@ -1,5 +1,7 @@
+import uuid
 from tha4_api import logger
 import tha4_api.api
+import sys
 import typing
 import random
 import queue
@@ -11,6 +13,9 @@ import pickle
 import pathlib
 import gzip
 import tha4_api.animationProvider
+from moviepy import ImageSequenceClip
+import io
+import tempfile
 
 class AnimationConfiguration:
     def __init__(self, configuration: dict):
@@ -330,8 +335,9 @@ class Renderer:
                         case "none":
                             end_frame = end_frame if end_frame < len(composed) else len(composed) - 1
                             composed[end_frame].set_head_rotation(
-                                self.defaultParams.head_rotation_y, 
-                                self.defaultParams.head_rotation_z)
+                                self.defaultParams.head_x,
+                                self.defaultParams.head_y, 
+                                self.defaultParams.neck_z)
                         case _:
                             raise ValueError(f"Invalid restore value: {composition.get('restore')}")
                 case "body_rotation":
@@ -378,8 +384,8 @@ class Renderer:
                         case "none":
                             end_frame = end_frame if end_frame < len(composed) else len(composed) - 1
                             composed[end_frame].set_body_rotation(
-                                self.defaultParams.body_rotation_y, 
-                                self.defaultParams.body_rotation_z)
+                                self.defaultParams.body_y, 
+                                self.defaultParams.body_z)
                         case _:
                             raise ValueError(f"Invalid restore value: {composition.get('restore')}")
                 case "mouth":
@@ -522,12 +528,22 @@ class Renderer:
             
             print(f"Composed and rendered {len(imgs)} frames (total {len(imgs) / self.baseFps} seconds) in {end_time - current_time} seconds.")
 
+    def render_animation_no_callback(self, composed: typing.List[tha4_api.api.PoseUpdateParams]) -> typing.List[numpy.ndarray]:
+        if not composed:
+            return []
+        
+        self.render_animation(composed, on_live=False, debugging=False)
+        imgs = []
+        for i, frame in enumerate(composed):
+            img = self.rendererStateCacher.get_state(frame)
+            imgs.append(img)
+        return imgs
 
     def run_render_loop(self):
         while self.connected:
             try:
-                logger.Logger.log('Composing desired state')
                 states = self.compose_state(self.pending_states.get(block=False))
+                logger.Logger.log('Composing desired state')
                 self.render_animation(states)
                 time.sleep(len(states) / self.baseFps)
             except queue.Empty:
@@ -544,3 +560,59 @@ class Renderer:
     def stop_render_loop(self):
         self.connected = False
                 
+                
+    def convert_composed_frames_to_mp4(
+        self,
+        frames: list[numpy.ndarray],
+        crf: int = 23, # Constant Rate Factor: 0 (lossless) to 51 (worst quality), 23 is a good default
+        preset: str = 'medium' # Encoding speed/compression ratio: 'ultrafast', 'medium', 'slow' etc.
+    ) -> bytes:
+        """
+        Converts a list of numpy.ndarray frames to MP4 bytes using moviepy.
+
+        Args:
+            frames (list[numpy.ndarray]): A list of numpy arrays, where each array
+                                    is a video frame (H, W, 3) and dtype numpy.uint8.
+            baseFps (int): The frames per second for the output video.
+            crf (int): Constant Rate Factor for video quality (lower is better quality, larger file size).
+            preset (str): Encoding preset for H.264 (e.g., 'medium', 'fast', 'slow').
+
+        Returns:
+            bytes: The MP4 video data as bytes.
+        """
+        baseFps = self.baseFps
+        if not frames:
+            raise ValueError("The input frames list cannot be empty.")
+
+        # Validate frame dimensions and dtype (optional but good practice)
+        first_frame = frames[0]
+        if not (first_frame.dtype == numpy.uint8 and first_frame.ndim == 3 and first_frame.shape[2] == 3):
+            print(f"Warning: Frames should ideally be (H, W, 3) and numpy.uint8. Got shape {first_frame.shape} and dtype {first_frame.dtype}")
+            # moviepy might be more forgiving, but it's good to be aware.
+
+        # Create an ImageSequenceClip from the list of frames
+        # moviepy expects RGB (H, W, 3) for its ImageSequenceClip
+        clip = ImageSequenceClip(frames, fps=baseFps)
+
+        try:
+            temp_file = pathlib.Path(tempfile.gettempdir()) / pathlib.Path(f'{uuid.uuid4().hex}.mp4')
+            
+            clip.write_videofile(
+                temp_file,
+                codec='libx264',
+                audio_codec='aac', # Even if no audio, it's a common MP4 requirement
+                fps=baseFps,
+                preset=preset,
+                ffmpeg_params=['-crf', str(crf), '-pix_fmt', 'yuv420p'], # ensures compatibility
+                logger=None,
+            )
+            
+            res = temp_file.read_bytes()
+            temp_file.unlink()
+            return res
+        except Exception as e:
+            print(f"Error during video conversion with moviepy: {e}", file=sys.stderr)
+            # Check if ffmpeg is in PATH or if there's a codec issue
+            if "ffmpeg" in str(e).lower() or "codec" in str(e).lower():
+                print("Please ensure FFmpeg is installed and added to your system's PATH.", file=sys.stderr)
+            raise

@@ -8,20 +8,35 @@ d = json.loads(pathlib.Path(
 for i in d['states']:
     for j in d['states'][i]:
         if 'body_rotation' not in [action['action'] for action in j]:
+            dur = random.uniform(0.4, 0.6)
+            y = [0.5, random.uniform(0.4, 0.6)]
+            z = [0.5, random.uniform(0.4, 0.6)]
+            
             j.append({
                 "action": "body_rotation",
-                "y": [0.5, random.uniform(0.3, 0.7)],
-                "z": [0.5, random.uniform(0.3, 0.7)],
+                "y": y,
+                "z": z,
                 "restore": "rapid",
                 "transition": "sine",
-                "duration": random.uniform(0.4, 0.6)
+                "duration": dur
             })
+            
+            if random.randint(1, 3) == 2:
+                j.append({
+                    "action": "body_rotation",
+                    "y": y,
+                    "z": z,
+                    "restore": "rapid",
+                    "transition": "sine",
+                    "duration": dur
+                })
+                
         elif 'head_rotation' not in [action['action'] for action in j]:
             j.append({
                 "action": "head_rotation",
-                "x": [0.5, random.uniform(0.3, 0.7)],
-                "y": [0.5, random.uniform(0.3, 0.7)],
-                "z": [0.5, random.uniform(0.3, 0.7)],
+                "x": [0.5, random.uniform(0.4, 0.6)],
+                "y": [0.5, random.uniform(0.4, 0.6)],
+                "z": [0.5, random.uniform(0.4, 0.6)],
                 "restore": "rapid",
                 "transition": "sine",
                 "duration": random.uniform(0.4, 0.6)

@@ -29,6 +29,7 @@ renderer = tha4_api.animation.Renderer(conf, manager, 20)
 renderer.deserialize('tha4_cache/Cyrene.tha4')
 
 for i in renderer.configuration.states:
+    logger.Logger.log(f"Composing state {i}")
     all = []
     for j in renderer.configuration.states[i]:
         all += renderer.compose_animation_group(j)
